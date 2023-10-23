@@ -11,7 +11,8 @@ let {
   DB_NAME,
   DB_PORT_LOCAL,
   DB_URI,
-  NODE_TEST
+  NODE_TEST,
+  PORT
 } = process.env
 
 

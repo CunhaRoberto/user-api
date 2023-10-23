@@ -4,7 +4,7 @@ export default
   '/v1/user/': {
     post: {
       summary: 'Create user',
-      tags: ['Users'],
+      tags: ['User'],
       description: 'Create user',
       parameters: [
         {
@@ -48,21 +48,79 @@ export default
       ],
       responses: {
         201: {
-          description: 'User created successfully'
+          description: 'Created successfully'
         },
         400: {
-          description: 'Bad Request'
+          description: 'Bad request'
         },
         404: {
           description: 'Not found'
         },
-
+        409: {
+          description: 'Conflict'
+        },
         500: {
           description: 'Internal Server Error'
         }
       }
       }
-    }  
+    },
+    '/v1/user/id': {
+      put: {
+        summary: 'Update user',
+        description: 'Update user',
+        tags: ['User'],
+        parameters: [
+          {
+            name: 'name',
+            in: 'query',
+            required: false,
+            type: 'string'
+          },
+          {
+            name: 'cpf',
+            in: 'query',
+            required: false,
+            description: 'CPF - eleven charctes ( only number)',
+            example: '12312312399',
+            type: 'string'
+          },
+          {
+            name: 'cellPhone',
+            in: 'query',
+            required: false,
+            example: '1192345678',
+            description: 'DDD with two numbers + telephone with nine numbers starting with 9',
+            type: 'string'
+          },
+          {
+            name: 'email',
+            in: 'query',
+            required: false ,
+            example: 'teste@teste.com ' ,
+            type: 'string'
+          },
+          
+        ],
+        responses: {
+          200: {
+            description: 'Updated successfully'
+          },
+          400: {
+            description: 'Bad request'
+          },
+          404: {
+            description: 'Not found'
+          },
+          409: {
+            description: 'Conflict'
+          },
+          500: {
+            description: 'Internal server Error'
+          }
+        }
+      }
+    } 
 }
 
 

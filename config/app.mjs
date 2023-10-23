@@ -1,5 +1,5 @@
 export default {
     name: 'user-api',
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 5000
   }
   
