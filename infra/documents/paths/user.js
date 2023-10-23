@@ -15,7 +15,7 @@ export default
           schema: {
             type: 'object',
             properties: {
-              name: {
+                name: {
                 type: 'string',
                 require: true,
                 example: 'Sophia Cunha'
@@ -72,6 +72,13 @@ export default
         tags: ['User'],
         parameters: [
           {
+            in: 'query',
+            name: 'id',
+            description: 'user id',
+            required: true,
+            type: 'string'
+          },
+          {
             name: 'name',
             in: 'query',
             required: false,
@@ -81,7 +88,7 @@ export default
             name: 'cpf',
             in: 'query',
             required: false,
-            description: 'CPF - eleven charctes ( only number)',
+            description: 'CPF - eleven characters ( only number)',
             example: '12312312399',
             type: 'string'
           },
@@ -97,7 +104,7 @@ export default
             name: 'email',
             in: 'query',
             required: false ,
-            example: 'teste@teste.com ' ,
+            example: 'teste@teste.com' ,
             type: 'string'
           },
           
