@@ -5,47 +5,41 @@ import InvalidParameterException from '../../core/exceptions/InvalidParameterExc
 
 let ajv = new Ajv({ allErrors: true, jsonPointers: true })
 
-
-const schemaUsers = {
+const schema = {
   type: 'object',
   properties: {
+    id: {
+      type: 'string',
+      format: 'uuid'
+    },
+    name: {
+      type: 'string'
+    },
     cpf: {
       type: 'string',
       pattern: '^[0-9]*$', 
       minLength: 11,
       maxLength: 11
-      
-    },
-    name: {
-      type: 'string'
     },
     email: {
       type: 'string',
-      format: 'email'      
+      format: 'email'
     },
     cellPhone: {
       type: 'string',
       minLength: 11,
       maxLength: 11,
     },
-    password: {
-      type: 'string',
-      minLength: 6,
-      maxLength: 10,
-    }    
+    
   },
   required: [
-    'cpf',
-    'name',
-    'email',
-    'cellPhone',
-    'password'
+    'id'
   ],
   additionalProperties: false
 }
 
 async function validate(data) {
-
+  
   if(data.cpf){
     if(isNaN(Number(data.cpf)) || ( Number(data.cpf) < 1)){
 
@@ -80,15 +74,15 @@ async function validate(data) {
       throw new InvalidParameterException(JSON.stringify(result));
     }
   }
-   
-  const validateUsers = ajv.compile(schemaUsers)
-  const result = validateUsers(data)
+  
+  const validateUser = ajv.compile(schema)
+  const result = validateUser(data)
 
   if (result) {
     return result
   }
 
-  throw new InvalidParameterException(JSON.stringify(validateUsers.errors))
+  throw new InvalidParameterException(JSON.stringify(validateUser.errors))
 }
 
 export default {

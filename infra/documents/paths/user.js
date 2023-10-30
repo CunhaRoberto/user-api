@@ -30,7 +30,7 @@ export default
                 require: true,
                 example: 'sophia@email.com'
               },
-              celular: {
+              cellPhone: {
                 type: 'string',
                 require: true,
                 example: '11912345678'
@@ -66,6 +66,42 @@ export default
       }
     },
     '/v1/user/id': {
+      get: {
+        summary: 'Search user',
+        description: 'Search user',
+        tags: ['User'],
+        parameters: [
+          {
+            in: 'header',
+            name: 'Authorization',
+            description: 'User token',
+            required: true
+          },
+          {
+            name: 'id',
+            in: 'query',
+            required: true,
+            type: 'string'
+          }
+        ],
+        responses: {
+          200: {
+            description: 'Located successfully'
+          },
+          400: {
+            description: 'Bad Request'
+          },
+          404: {
+            description: 'Not found'
+          },
+          409: {
+            description: 'Conflict, already exists'
+          },
+          500: {
+            description: 'Internal server Error'
+          }
+        }
+        },
       put: {
         summary: 'Update user',
         description: 'Update user',
@@ -126,7 +162,36 @@ export default
             description: 'Internal server Error'
           }
         }
-      }
+      },
+      delete: {
+        summary: "Remove user",
+        description: "Delete user",
+        tags: ["User"],
+        parameters: [
+          {
+            in: "query",
+            name: "id",
+            description: "User Id",
+            required: true,
+            type: "string",
+            format: "uuid"
+          }
+        ],
+        responses: {
+            200: {
+              description: "Deleted successfully",
+            },
+            400: {
+              description: "Bad Request",
+            },
+            404: {
+              description: "Not found",
+            },
+            500: {
+              description: "Internal Server Error",
+            }
+          }
+        }
     } 
 }
 

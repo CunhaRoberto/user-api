@@ -4,10 +4,10 @@ class Users {
     this.repository = repositoryImpl
   }
 
-  async save(inventory) {
+  async save(user) {
     return this
       .repository
-      .save(this.collection, inventory)
+      .save(this.collection, user)
   }
 
   async update(user) {
