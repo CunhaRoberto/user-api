@@ -21,9 +21,7 @@ if (Application.isInLocalMode()) {
   DB_URI = `mongodb://${DB_HOST_LOCAL}:${DB_PORT_LOCAL}`  
 }
 
-if (!Application.isInLocalMode()) {
-  DB_URI = `mongodb://${DB_USER_LOCAL}:${DB_PASSWORD_LOCAL}@${DB_HOST_LOCAL}:${DB_PORT_LOCAL}?authSource=admin`
-}
+
 
 if (NODE_TEST) {
   const mongod = await MongoMemoryServer.create()
