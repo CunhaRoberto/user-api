@@ -55,6 +55,14 @@ class RepositoryWrapper {
       statement.query(userEmail)
     )
   }
+
+  searchAuthUsers(params) {
+    const statement = this.queries.searchAuthUsers
+    return this.impl.aggregate(
+      statement.collection,
+      statement.query(params)
+    )
+  }
   
 }
 
