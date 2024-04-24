@@ -13,6 +13,7 @@ class CreateUsers {
 
   async execute(userDto) {
      
+    userDto.email = userDto.email.toLowerCase();
     const cpfUserPromise = this.repository.getUserByCpf(userDto.cpf);
     const emailUserPromise = this.repository.getUserByEmail(userDto.email);
     const [cpfUser, emailUser] = await Promise.all([cpfUserPromise, emailUserPromise]);

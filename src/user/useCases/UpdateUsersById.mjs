@@ -17,14 +17,18 @@ class UpdateUsers {
       throw new AlreadyExistsException('CPF already exists.');
     }
 
-    const emailUser = await this.repository.getUserByEmail(userDto.email)
-    if (emailUser.length > 0) {
-      throw new AlreadyExistsException('Email already exists.');
-    }
-
+    if(userDto.email){
+      userDto.email = userDto.email.toLowerCase();
+      const emailUser = await this.repository.getUserByEmail(userDto.email)
+      if (emailUser.length > 0) {
+        throw new AlreadyExistsException('Email already exists.');
+          } 
+  }
+   
+    
     userDto._id = UUIDGenerator.from(userDto.id)
     delete userDto.id
-    userDto.updated_at = new Date();
+    userDto.updated_at = new Date();    
     const result = await this.repository.update(userDto);
 
     if (result.modifiedCount === 0) {
@@ -32,8 +36,6 @@ class UpdateUsers {
     }
 
     return userDto;
-
-
   }
 }
 
