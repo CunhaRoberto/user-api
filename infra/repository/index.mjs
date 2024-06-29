@@ -63,6 +63,14 @@ class RepositoryWrapper {
       statement.query(params)
     )
   }
+
+  searchByCode(code) {
+    const statement = this.queries.searchByCode
+    return this.impl.aggregate(
+      statement.collection,
+      statement.query(code)
+    )
+  }
   
 }
 
