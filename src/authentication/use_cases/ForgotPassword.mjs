@@ -39,37 +39,33 @@ class CreateUsers {
 
     if(!Application.isInProductionMode()) param.email = 'rcunha@live.com'   
       
-   if(Application.isInProductionMode()) {
-
-      const portEmail = Number(PORT_EMAIL)
-      const hostEmail = HOST_EMAIL
-      var transport = nodemailer.createTransport(
-        {
-        host: hostEmail,
-        port: portEmail,
-        logger: true,
-        debug: true,
-        auth: {
-          ...params
-        },
-        tls: {
-          rejectUnauthorized: false
-        },
-        connectionTimeout: 100000,
-        }
-      );
+    const portEmail = Number(PORT_EMAIL)
+    const hostEmail = HOST_EMAIL
+    var transport = nodemailer.createTransport(
+      {
+      host: hostEmail,
+      port: portEmail,
+      logger: true,
+      debug: true,
+      auth: {
+        ...params
+      },
+      tls: {
+        rejectUnauthorized: false
+      },
+      connectionTimeout: 100000,
+      }
+    );
  
     
-      transport.verify(function(error, success) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('SMTP connection is ready');
-        }
-      });   
-      
-
-   }
+    transport.verify(function(error, success) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('SMTP connection is ready');
+      }
+    });   
+    
 
   
    const message = {
