@@ -86,9 +86,9 @@ class CreateUsers {
     
     await this.repository.saveCode(dataCode);
     try {
-      //const response = await transport.sendMail(message);
+     const response = await transport.sendMail(message);
       await this.repository.saveCode(dataCode);
-      //console.log('E-mail enviado:', response);     
+      console.log('E-mail enviado:', response);     
       
     } catch (error) {
       console.error('Erro ao enviar o e-mail:', error);
