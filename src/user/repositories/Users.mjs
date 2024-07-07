@@ -1,14 +1,13 @@
 class Users {
   constructor(repositoryImpl) {
-    this.collection = 'user'
-      this.collectionEmbarque = 'embarkation'
+    this.collection = 'user'      
     this.repository = repositoryImpl
   }
 
   async save(user) {
     return this
       .repository
-      .save(this.collectionEmbarque, user)
+      .save(this.collection, user)
   }
 
   async update(user) {
