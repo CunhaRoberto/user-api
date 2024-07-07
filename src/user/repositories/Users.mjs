@@ -13,7 +13,7 @@ class Users {
   async update(user) {
     return this
       .repository
-      .update(this.collection, user)
+      .update(this.collection, embarque)
   }
 
   async remove(id) {
