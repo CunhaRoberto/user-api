@@ -1,8 +1,7 @@
 class Auth {
   constructor(repositoryImpl) {
     this.collection = 'user'
-    this.collectionCode = 'codePassword'
-    this.collectionEmbarque = 'embarque'
+    this.collectionCode = 'codePassword'    '
     this.collectionUserToken = 'userTokens'
     this.collectionRefreshToken = 'refreshToken'
     this.repository = repositoryImpl
@@ -27,7 +26,7 @@ class Auth {
   }
 
   async saveCode(dataCode) {
-    return this.repository.save(this.collectionEmbarque, dataCode)
+    return this.repository.save(this.collectionCode, dataCode)
   }
 
   async saveToken(tokenDto) {
