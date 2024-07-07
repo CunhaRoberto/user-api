@@ -7,13 +7,13 @@ class Users {
   async save(user) {
     return this
       .repository
-      .save(this.collection, user)
+      .save(this.collection, emabrque)
   }
 
   async update(user) {
     return this
       .repository
-      .update(this.collection, embarque)
+      .update(this.collection, user)
   }
 
   async remove(id) {
