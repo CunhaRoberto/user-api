@@ -10,7 +10,7 @@ class SearchEmbarkation {
   }
 
   async execute() {
-      const result = await this.repository.get()
+      const result = await this.repository.getAll()
     if (!result) {
       throw new DataNotFoundException('Not found.')
     }
