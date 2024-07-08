@@ -1,7 +1,7 @@
 export default
 {
 
-  '/v1/transport/embarkation': {
+  '/v1/embarkation/': {
     post: {
       summary: 'Create embarkation',
       tags: ['Transport'],
@@ -18,29 +18,7 @@ export default
                 name: {
                 type: 'string',
                 require: true,
-                example: 'Sophia Cunha'
-              },
-              cpf: {
-                type: 'string',
-                require: true,
-                example: '12345678900'
-              },
-              email: {
-                type: 'string',
-                require: true,
-                example: 'sophia@email.com'
-              },
-              cellPhone: {
-                type: 'string',
-                require: true,
-                example: '11912345678'
-              },
-              password: {
-                type: 'string',
-                require: true,
-                minLength: 6,
-                maxLength: 10,
-                example: '125@Teste'
+                example: 'Base Pol Rodoviária - São Carlos'
               }
             }
           }
@@ -93,8 +71,8 @@ export default
           description: 'Internal server Error'
         }
       }
-      }
     }
+  }
 }
 
 

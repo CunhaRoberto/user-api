@@ -10,11 +10,11 @@ class SearchEmbarkation {
   }
 
   async execute() {
-      const resultUser = await this.repository.getById()
-    if (!resultUser) {
-      throw new DataNotFoundException('User not found.')
+      const result = await this.repository.get()
+    if (!result) {
+      throw new DataNotFoundException('Not found.')
     }
-    return resultUser
+    return result
   }
 }
 

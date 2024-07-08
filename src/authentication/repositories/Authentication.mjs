@@ -1,7 +1,7 @@
 class Auth {
   constructor(repositoryImpl) {
     this.collection = 'user'
-    this.collectionCode = 'codePassword'    '
+    this.collectionCode = 'codePassword'    
     this.collectionUserToken = 'userTokens'
     this.collectionRefreshToken = 'refreshToken'
     this.repository = repositoryImpl
