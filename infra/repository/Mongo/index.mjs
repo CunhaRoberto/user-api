@@ -32,7 +32,7 @@ if (NODE_TEST) {
 const databaseClient = new Mongo(DB_URI, DB_NAME)
 console.log(`⚡️ Mongo conectdado: ${DB_URI}.`)
 console.log(`⚡️ Banco de dados: ${DB_NAME}.`)
-// databaseClient.connect()
+databaseClient.connect()
 
 export { databaseClient as Implementation }
 export default databaseClient
