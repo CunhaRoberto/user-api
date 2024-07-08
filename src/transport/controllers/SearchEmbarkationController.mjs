@@ -12,7 +12,7 @@ export async function search(request, response, next) {
     
     const searchUsersIdUseCase = new SearchUsersId(Repository)
     const result = await searchUsersIdUseCase.execute()
-    const presentUser = await Embarkation.present(result)
+    const presentUser = await EmbarkationPresenter.presentMap(result)
     return response.status(200).json(presentUser)
   } catch (error) {
     return next(error)
