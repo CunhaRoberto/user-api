@@ -16,8 +16,8 @@ class Embarkation {
       .update(this.collection, embarkation)
     }
     
-    async get() {
-      const data = await this.repository.get(this.collection)
+    async getAll() {
+      const data = await this.repository.getAll(this.collection)
       return data
     }
 

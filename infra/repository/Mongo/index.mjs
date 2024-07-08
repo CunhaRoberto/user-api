@@ -8,6 +8,7 @@ let {
   DB_HOST_LOCAL,
   DB_USER_LOCAL,
   DB_PASSWORD_LOCAL,
+  SRV,
   DB_NAME,
   DB_PORT_LOCAL,
   DB_URI,
@@ -18,7 +19,7 @@ let {
 
 
 if (Application.isInLocalMode()) {
-  DB_URI = `mongodb://${DB_HOST_LOCAL}:${DB_PORT_LOCAL}`  
+  DB_URI = `mongodb${SRV}://${DB_HOST_LOCAL}:${DB_PORT_LOCAL}`  
 }
 
 

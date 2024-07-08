@@ -21,7 +21,7 @@ class RepositoryWrapper {
   }
 
   getAll(collection) {
-    return this.impl.get(collection)
+    return this.impl.getAll(collection)
   }
 
   remove(collection, id) {
