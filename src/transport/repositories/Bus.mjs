@@ -1,19 +1,19 @@
-class Embarkation {
+class Bus {
   constructor(repositoryImpl) {
     this.collection = 'bus'
     this.repository = repositoryImpl
   }
 
-  async save(embarkation) {
+  async save(bus) {
     return this
       .repository
-      .save(this.collection, embarkation)
+      .save(this.collection, route)
   }
 
-  async update(embarkation) {
+  async update(id) {
     return this
       .repository
-      .update(this.collection, embarkation)
+      .update(this.collection, id)
     }
     
     async getAll() {
@@ -30,4 +30,4 @@ class Embarkation {
  
 }
 
-export default Embarkation
+export default Bus

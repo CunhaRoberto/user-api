@@ -17,4 +17,5 @@ export async function search(request, response, next) {
   } catch (error) {
     return next(error)
   }
+  
 }
