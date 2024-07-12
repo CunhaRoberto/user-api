@@ -159,10 +159,25 @@ export default
           schema: {
             type: 'object',
             properties: {
-                name: {
+                idRota: {
                 type: 'string',
                 require: true,
-                example: 'São José do Rio Preto X São Paulo'
+                example: '95af06d5-56c5-435a-a8e9-8fe1201c3721'
+              },
+              idBus: {
+                type: 'string',
+                require: true,
+                example: '95af06d5-56c5-435a-a8e9-8fe1201c3721'
+              },
+              dataPartida: {
+                type: 'string',
+                require: true,
+                example: '2024-07-12T12:00:34.493Z'
+              },
+              dataChegada: {
+                type: 'string',
+                require: true,
+                example: '2024-07-12T21:00:34.493Z'
               }
             }
           }
