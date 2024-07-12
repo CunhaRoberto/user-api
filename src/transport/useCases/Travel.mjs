@@ -20,15 +20,15 @@ class Travel {
   async create(dto) {
       
     const id = UUIDGenerator.generate()
-    embarkationDto._id = id
-    embarkationDto.created_at = new Date();
-    embarkationDto.isActive = true;
-    const result = await this.repository.save(embarkationDto);
+    dto._id = id
+    dto.created_at = new Date();
+    dto.isActive = true;
+    const result = await this.repository.save(dto);
     if (!result) {
       throw new DataNotFoundException('Not found.');
     }
-    embarkationDto._id = id
-    return embarkationDto;
+    dto._id = id
+    return dto;
   }
 
 

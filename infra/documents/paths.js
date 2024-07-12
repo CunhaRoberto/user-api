@@ -9,6 +9,7 @@ let paths = Object.assign(
   authentication,
   transport
 
+
 )
 
 export default paths

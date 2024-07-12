@@ -17,6 +17,8 @@ router.route('/v1/embarkation/').get(SearchEmbarkationController.search);
 router.route('/v1/routes/').get(SearchRoutesController.search);
 
 router.route('/v1/travel/').get(TravelController.search);
+router.route('/v1/travel/').post(TravelController.create);
+
 router.route('/v1/bus/').get(BusController.search);
 
 
