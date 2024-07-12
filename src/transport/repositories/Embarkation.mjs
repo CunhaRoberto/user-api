@@ -1,6 +1,6 @@
 class Embarkation {
   constructor(repositoryImpl) {
-    this.collection = 'bus'
+    this.collection = 'embarkation'
     this.repository = repositoryImpl
   }
 

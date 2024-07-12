@@ -16,7 +16,7 @@ const schemaUsers = {
   required: [
     'name'
   ],
-  additionalProperties: true
+  additionalProperties: false
 }
 
 async function validate(data) {
