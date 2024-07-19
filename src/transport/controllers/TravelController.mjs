@@ -5,6 +5,7 @@ import TravelRepository from '../repositories/Travel.mjs'
 import RepositoryImpl from '../../../infra/repository/index.mjs'
 import Travel from '../useCases/Travel.mjs'
 import { default as CreateTravelValidator } from '../validators/CreateTravel.mjs'
+import { default as DeleteTravelValidator } from '../validators/DeleteTravel.mjs'
 
 const Repository = new TravelRepository(RepositoryImpl)
 
@@ -49,11 +50,13 @@ export async function update(request, response, next) {
 }
 export async function remove(request, response, next) {
   try {
+
+    const travelId = request.query
+    await DeleteTravelValidator.validate(travelId)
     
-    const searchTravelUseCase = new Travel(Repository)
-    const result = await searchTravelUseCase.remove()
-    const presentUser = await TravelPresenter.presentMap(result)
-    return response.status(200).json(presentUser)
+    const deleteTravelUseCase = new Travel(Repository)
+    const result = await deleteTravelUseCase.remove(travelId)
+    return response.status(200).json(result)
   } catch (error) {
     return next(error)
   } 

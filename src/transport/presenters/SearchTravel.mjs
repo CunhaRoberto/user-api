@@ -7,7 +7,12 @@ const presenterMap = (data) => {
 
     let result = {
       id: id.toString(),
-      name: Temp.name,
+      routeDesc: Temp.rota.name,  
+      routeId: Temp.rota.id,  
+      busDesc: Temp.bus.name,
+      busId: Temp.bus.id,
+      dateStart: Temp.dataPartida,
+      dateFinish: Temp.dataChegada,      
       isActive: Temp.isActive,
       created_at: Temp.created_at    
     }

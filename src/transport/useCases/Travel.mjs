@@ -18,7 +18,11 @@ class Travel {
   }
 
   async create(dto) {
-      
+    
+    //converter e pesquisar idRota
+    //converter e pesquisar idBus
+    //add name de rota e bus
+
     const id = UUIDGenerator.generate()
     dto._id = id
     dto.created_at = new Date();
@@ -62,8 +66,8 @@ class Travel {
     return userDto;
   }
 
-  async remove(userId) {
-    const id = UUIDGenerator.from(userId.id)
+  async remove(travelId) {
+    const id = UUIDGenerator.from(travelId.id)
 
     const resultId = await this.repository.remove(id);
     if (resultId.deletedCount === 1) {
