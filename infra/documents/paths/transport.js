@@ -159,7 +159,7 @@ export default
           schema: {
             type: 'object',
             properties: {
-                idRota: {
+                idRoute: {
                 type: 'string',
                 require: true,
                 example: '95af06d5-56c5-435a-a8e9-8fe1201c3721'
@@ -169,12 +169,12 @@ export default
                 require: true,
                 example: '95af06d5-56c5-435a-a8e9-8fe1201c3721'
               },
-              dataPartida: {
+              startDate: {
                 type: 'string',
                 require: true,
                 example: '2024-07-12T12:00:34.493Z'
               },
-              dataChegada: {
+              finishDate: {
                 type: 'string',
                 require: true,
                 example: '2024-07-12T21:00:34.493Z'

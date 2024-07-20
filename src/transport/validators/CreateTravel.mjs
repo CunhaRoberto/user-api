@@ -9,11 +9,20 @@ let ajv = new Ajv({ allErrors: true, jsonPointers: true })
 const schemaUsers = {
   type: 'object',
   properties: {
-    name: {
-      type: 'string'
-    }  
+    idBus: {
+      type: 'string',
+      format: 'uuid'
+    },
+    idRoute: {
+      type: 'string',
+      format: 'uuid'
+    }
   },
   required: [
+    // 'startDate',
+    // 'finishDate',
+    'idBus',
+    'idRoute'
     
   ],
   additionalProperties: true
@@ -21,14 +30,14 @@ const schemaUsers = {
 
 async function validate(data) {
    
-  const validateUsers = ajv.compile(schemaUsers)
-  const result = validateUsers(data)
+  const validateTravel = ajv.compile(schemaUsers)
+  const result = validateTravel(data)
 
   if (result) {
     return result
   }
 
-  throw new InvalidParameterException(JSON.stringify(validateUsers.errors))
+  throw new InvalidParameterException(JSON.stringify(validateTravel.errors))
 }
 
 export default {

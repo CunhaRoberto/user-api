@@ -27,7 +27,10 @@ const presenter = async (data) => {
   let id = UUIDGenerator.from(data._id)
   let result = {    
     id: id.toString(),
-    name: data.name,
+    idBus: data.idBus,
+    idRoute: data.idRoute,
+    startDate: data.startDate,
+    finishDate: data.finishDate,
     isActive: data.isActive,
     created_at: data.created_at 
   }

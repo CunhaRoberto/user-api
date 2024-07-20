@@ -26,8 +26,8 @@ class Travel {
     const id = UUIDGenerator.generate()
     dto._id = id
     dto.created_at = new Date();
-    dto.dataChegada = new Date(dto.dataChegada);
-    dto.dataPartida = new Date(dto.dataPartida);
+    dto.startDate = new Date(dto.startDate);
+    dto.finishDate = new Date(dto.finishDate);
     dto.isActive = true;
     const result = await this.repository.save(dto);
     if (!result) {
