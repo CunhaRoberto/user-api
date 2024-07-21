@@ -21,8 +21,8 @@ const schemaUsers = {
   required: [
     // 'startDate',
     // 'finishDate',
-    'idBus',
-    'idRoute'
+    // 'idBus',
+    // 'idRoute'
     
   ],
   additionalProperties: true
