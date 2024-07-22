@@ -30,7 +30,7 @@ export async function create(request, response, next) {
     const createTravelUseCase = new Travel(Repository)
     const result = await createTravelUseCase.create(dto)
     const presentUser = await TravelPresenter.present(result)
-    return response.status(200).json(presentUser)
+    return response.status(201).json(presentUser)
   } catch (error) {
     return next(error)
   } 
