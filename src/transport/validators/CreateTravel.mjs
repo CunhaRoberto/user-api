@@ -16,13 +16,21 @@ const schemaUsers = {
     idRoute: {
       type: 'string',
       format: 'uuid'
+    },
+    startDate: {
+      type: 'string',
+      format: 'date-time'
+    },
+    finishDate: {
+      type: 'string',
+      format: 'date-time'
     }
   },
   required: [
-    // 'startDate',
-    // 'finishDate',
-    // 'idBus',
-    // 'idRoute'
+    'startDate',
+    'finishDate',
+    'idBus',
+    'idRoute'
     
   ],
   additionalProperties: true

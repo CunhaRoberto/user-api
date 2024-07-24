@@ -19,9 +19,26 @@ class Travel {
 
   async create(dto) {
     
-    //converter e pesquisar idRota
-    //converter e pesquisar idBus
-    //add name de rota e bus
+    dto.idBus = UUIDGenerator.from(dto.idBus)
+    dto.idRoute = UUIDGenerator.from(dto.idRoute)
+    
+    const resultBus = await this. repository.getById(dto.idBus, 'bus')
+    if (!resultBus) {
+      throw new DataNotFoundException('Not found.');
+    }else{
+    dto.prefix = resultBus.prefixo
+    dto.plaque = resultBus.placa
+    dto.characterized = resultBus.caracterizado
+    dto.numberSeats = resultBus.quantidadePoltronas
+    }
+
+
+    const resultRoute = await this. repository.getById(dto.idRoute, 'routes')
+    if (!resultRoute) {
+      throw new DataNotFoundException('Not found.');
+    }else{
+    dto.nameRoute = resultRoute.name  
+    }
 
     const id = UUIDGenerator.generate()
     dto._id = id

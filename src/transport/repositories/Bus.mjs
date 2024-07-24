@@ -27,6 +27,11 @@ class Bus {
       .remove(this.collection, id)
     return data
   }
+
+  async getById(id) {
+    const data = await this.repository.get(this.collection, id)
+    return data
+  }
  
 }
 

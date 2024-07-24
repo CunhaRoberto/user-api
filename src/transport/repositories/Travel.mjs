@@ -27,6 +27,11 @@ class Travel {
       .remove(this.collection, id)
     return data
   }
+
+  async getById(id, collection) {
+    const data = await this.repository.get(collection, id)
+    return data
+  }
  
 }
 
