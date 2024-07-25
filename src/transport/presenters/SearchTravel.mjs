@@ -2,19 +2,22 @@ import UUIDGenerator from '../../support/UUIDGenerator.mjs'
 
 const presenterMap = (data) => {
   const resultRoutes = data.map((Temp) => {
-    let id = UUIDGenerator.from(Temp._id)
-
-
+    let id = UUIDGenerator.from(Temp._id)    
+    Temp.idRoute = UUIDGenerator.from(Temp.idRoute).toString()
+    Temp.idBus = UUIDGenerator.from(Temp.idBus).toString()
+    delete Temp._id
     let result = {
-      id: id.toString(),
-      routeDesc: Temp.rota?.name,  
-      routeId: Temp.rota?.id,  
-      busDesc: Temp.bus?.name,
-      busId: Temp.bus?.id,
-      dateStart: Temp.dataPartida,
-      dateFinish: Temp.dataChegada,      
-      isActive: Temp.isActive,
-      created_at: Temp.created_at    
+       id: id.toString(),
+      // nameRoute: Temp.nameRoute,  
+      // idRoute: UUIDGenerator.from(Temp.idRoute).toString(),  
+      // busDesc: Temp.bus?.name,
+      // idBus: UUIDGenerator.from(Temp.idBus).toString(),
+      // plaqueBus:Temp.plaque,
+      // startDate: Temp.startDate,
+      // finishDate: Temp.finishDate,      
+      // isActive: Temp.isActive,
+      // created_at: Temp.created_at    
+      ...Temp
     }
 
     return result
