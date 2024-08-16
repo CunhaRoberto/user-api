@@ -27,9 +27,9 @@
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/CunhaRoberto/user-api"
+    "url": "https://github.com/CunhaRoberto/arpac-api"
   },
-  "homepage": "https://github.com/CunhaRoberto/user-api",
+  "homepage": "https://github.com/CunhaRoberto/arpac-api",
   "dependencies": {
     "ajv": "^6.12.6",
     "ajv-formats": "^2.1.1",
