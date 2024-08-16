@@ -1,5 +1,5 @@
 export default {
-    name: 'user-api',
+    name: 'arpac-api',
     port: process.env.PORT || 5000
   }
   
