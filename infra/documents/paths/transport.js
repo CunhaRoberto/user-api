@@ -145,11 +145,11 @@ export default
       }
     }
   },
-  '/v1/travel/': {
+  '/v1/visit/': {
     post: {
-      summary: 'Create travel',
-      tags: ['Travel'],
-      description: 'Create travel',
+      summary: 'Create visit',
+      tags: ['Visit'],
+      description: 'Create visit',
       parameters: [
         {
           in: 'body',
@@ -202,9 +202,9 @@ export default
       }
       },
     get: {
-      summary: 'Search travel',
-      description: 'Search travel',
-      tags: ['Travel'],
+      summary: 'Search visit',
+      description: 'Search visit',
+      tags: ['Visit'],
       parameters: [
         {
           name: 'id',
@@ -232,11 +232,11 @@ export default
       }
     }
   },
-  '/v1/travel/id': {
+  '/v1/visit/id': {
       get: {
-        summary: 'Search travel',
-        description: 'Search travel',
-        tags: ['Travel'],
+        summary: 'Search visit',
+        description: 'Search visit',
+        tags: ['Visit'],
         parameters: [
           {
             name: 'id',
@@ -261,14 +261,14 @@ export default
         }
         },
       put: {
-        summary: 'Update travel',
-        description: 'Update travel',
-        tags: ['Travel'],
+        summary: 'Update visit',
+        description: 'Update visit',
+        tags: ['Visit'],
         parameters: [
           {
             in: 'query',
             name: 'id',
-            description: 'travel id',
+            description: 'visit id',
             required: true,
             type: 'string'
           },
@@ -322,14 +322,14 @@ export default
         }
       },
       delete: {
-        summary: "Remove travel",
-        description: "Delete travel",
-        tags: ["Travel"],
+        summary: "Remove visit",
+        description: "Delete visit",
+        tags: ["Visit"],
         parameters: [
           {
             in: "query",
             name: "id",
-            description: "Travel Id",
+            description: "Visit Id",
             required: true,
             type: "string",
             format: "uuid"

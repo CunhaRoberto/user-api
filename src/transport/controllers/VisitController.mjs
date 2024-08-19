@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 
 import { default as TravelPresenter } from '../presenters/SearchTravel.mjs'
-import TravelRepository from '../repositories/Travel.mjs'
+import TravelRepository from '../repositories/Visit.mjs'
 import RepositoryImpl from '../../../infra/repository/index.mjs'
-import Travel from '../useCases/Travel.mjs'
+import Travel from '../useCases/Visit.mjs'
 import { default as CreateTravelValidator } from '../validators/CreateTravel.mjs'
 import { default as DeleteTravelValidator } from '../validators/DeleteTravel.mjs'
 
@@ -25,7 +25,7 @@ export async function search(request, response, next) {
 export async function create(request, response, next) {
   try {
     const dto = request.body
-    await CreateTravelValidator.validate(dto)
+    // await CreateTravelValidator.validate(dto)
 
     const createTravelUseCase = new Travel(Repository)
     const result = await createTravelUseCase.create(dto)
