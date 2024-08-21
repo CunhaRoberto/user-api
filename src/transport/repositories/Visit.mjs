@@ -1,6 +1,6 @@
 class Travel {
   constructor(repositoryImpl) {
-    this.collection = 'visit'
+    this.collection = 'travel'
     this.repository = repositoryImpl
   }
 
