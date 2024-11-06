@@ -1,6 +1,6 @@
 export default
 {
-  '/v1/auth/login': {
+  '/auth/login': {
     post: {
       summary: 'Authentication user',
       tags: ['Auth'],
@@ -48,7 +48,7 @@ export default
     }
    
   },
-  '/v1/auth/forgot_password': {
+  '/auth/forgot_password': {
     post: {
       summary: 'Forgot password',
       tags: ['Auth'],
@@ -88,7 +88,7 @@ export default
       }
       }
     },
-    '/v1/auth/new_password': {
+    '/auth/new_password': {
       post: {
         summary: 'Create new password',
         tags: ['Auth'],
@@ -138,7 +138,7 @@ export default
         }
         }
       },
-      '/v1/auth/refresh_token': {
+      '/auth/refresh_token': {
         post: {
           summary: 'Refresch token',
           tags: ['Auth'],

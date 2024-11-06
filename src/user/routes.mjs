@@ -9,10 +9,11 @@ import { Router } from 'express'
 const router = Router()
 
 
-router.route('/v1/user/').post(CreateUsersController.create)
-router.route('/v1/user/id').get(SearchUsersController.search)
-router.route('/v1/user/id').put(UpdateUsersController.update)
-router.route('/v1/user/id').delete(DeleteUsersController.remove)
+router.route('/user/').post(CreateUsersController.create)
+router.route('/user/').get(SearchUsersController.search)
+router.route('/user/id').get(SearchUsersController.searchById)
+router.route('/user/id').put(UpdateUsersController.update)
+router.route('/user/id').delete(DeleteUsersController.remove)
 
 
 export default router

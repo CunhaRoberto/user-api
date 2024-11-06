@@ -19,13 +19,15 @@ class Users {
   async remove(id) {
     const data = await this
       .repository
-      .remove(this.collection, id)
-
-  
-
+      .remove(this.collection, id) 
     return data
   }
 
+  
+  async getAll() {
+    const data = await this.repository.getAll(this.collection)
+    return data
+  }
  
   async getById(id) {
     const data = await this.repository.get(this.collection, id)

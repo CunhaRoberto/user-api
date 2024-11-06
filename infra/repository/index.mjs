@@ -15,10 +15,11 @@ class RepositoryWrapper {
   update(collection, data) {
     return this.impl.update(collection, data)
   }
-
+  
   get(collection, id) {
     return this.impl.get(collection, id)
   }
+  
 
   getAll(collection) {
     return this.impl.getAll(collection)

@@ -20,6 +20,11 @@ class Auth {
     return data
   }
 
+  async get() {
+    const data = await this.repository.get(this.collection)
+    return data
+  }
+
   async getById(id) {
     const data = await this.repository.get(this.collection, id)
     return data

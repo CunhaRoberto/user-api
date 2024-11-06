@@ -3,15 +3,12 @@ import UUIDGenerator from '../../support/UUIDGenerator.mjs'
 const presenterMap = (data) => {
   const resultUsersSpecifications = data.map((Temp) => {
     let id = UUIDGenerator.from(Temp._id)
-//Analisar atributos de retorno
+    delete Temp._id
+    delete Temp.password
 
     let result = {
       id: id.toString(),
-      language: Temp.language,
-      type: Temp.type,
-      idType: Temp.idType,
-      yearsUsefulLife: Temp.yearsUsefulLife,
-
+      ...Temp
     }
 
     return result
@@ -21,14 +18,11 @@ const presenterMap = (data) => {
 }
 
 const presenter = async (data) => {
-  let result = {    
-    name: data.name,
-    email: data.email,
-    cpf: data.cpf,
-    created_at: data.created_at,
-    updated_at: data.updated_at
+  delete data._id
+  delete data.password
 
-
+  let result = {
+    ...data
   }
 
   return result

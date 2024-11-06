@@ -1,7 +1,7 @@
 export default
 {
   //user module
-  '/v1/user/': {
+  '/user/': {
     post: {
       summary: 'Create user',
       tags: ['User'],
@@ -63,136 +63,148 @@ export default
           description: 'Internal Server Error'
         }
       }
+      },
+    get: {
+      summary: 'Search users',
+      description: 'Search users',
+      tags: ['User'],
+      
+      responses: {
+        200: {
+          description: 'Located successfully'
+        },
+        400: {
+          description: 'Bad Request'
+        },
+        404: {
+          description: 'Not found'
+        },        
+        500: {
+          description: 'Internal server Error'
+        }
+      }
+      },
+    },
+  '/user/id': {
+    get: {
+      summary: 'Search user by id',
+      description: 'Search user by id',
+      tags: ['User'],
+      parameters: [
+      
+        {
+          name: 'id',
+          in: 'query',
+          required: true,
+          type: 'string'
+        }
+      ],
+      responses: {
+        200: {
+          description: 'Located successfully'
+        },
+        400: {
+          description: 'Bad Request'
+        },
+        404: {
+          description: 'Not found'
+        },      
+        500: {
+          description: 'Internal server Error'
+        }
+      }
+      },
+    put: {
+      summary: 'Update user',
+      description: 'Update user',
+      tags: ['User'],
+      parameters: [
+        {
+          in: 'query',
+          name: 'id',
+          description: 'user id',
+          required: true,
+          type: 'string'
+        },
+        {
+          name: 'name',
+          in: 'query',
+          required: false,
+          type: 'string'
+        },
+        {
+          name: 'cpf',
+          in: 'query',
+          required: false,
+          description: 'CPF - eleven characters ( only number)',
+          example: '12312312399',
+          type: 'string'
+        },
+        {
+          name: 'cellPhone',
+          in: 'query',
+          required: false,
+          example: '1192345678',
+          description: 'DDD with two numbers + telephone with nine numbers starting with 9',
+          type: 'string'
+        },
+        {
+          name: 'email',
+          in: 'query',
+          required: false ,
+          example: 'teste@teste.com' ,
+          type: 'string'
+        },
+        
+      ],
+      responses: {
+        200: {
+          description: 'Updated successfully'
+        },
+        400: {
+          description: 'Bad request'
+        },
+        404: {
+          description: 'Not found'
+        },
+        409: {
+          description: 'Conflict'
+        },
+        500: {
+          description: 'Internal server Error'
+        }
       }
     },
-    '/v1/user/id': {
-      get: {
-        summary: 'Search user',
-        description: 'Search user',
-        tags: ['User'],
-        parameters: [
-          {
-            in: 'header',
-            name: 'Authorization',
-            description: 'User token',
-            required: true
-          },
-          {
-            name: 'id',
-            in: 'query',
-            required: true,
-            type: 'string'
-          }
-        ],
-        responses: {
+    delete: {
+      summary: "Remove user",
+      description: "Delete user",
+      tags: ["User"],
+      parameters: [
+        {
+          in: "query",
+          name: "id",
+          description: "User Id",
+          required: true,
+          type: "string",
+          format: "uuid"
+        }
+      ],
+      responses: {
           200: {
-            description: 'Located successfully'
+            description: "Deleted successfully",
           },
           400: {
-            description: 'Bad Request'
+            description: "Bad Request",
           },
           404: {
-            description: 'Not found'
-          },
-          409: {
-            description: 'Conflict, already exists'
+            description: "Not found",
           },
           500: {
-            description: 'Internal server Error'
+            description: "Internal Server Error",
           }
         }
-        },
-      put: {
-        summary: 'Update user',
-        description: 'Update user',
-        tags: ['User'],
-        parameters: [
-          {
-            in: 'query',
-            name: 'id',
-            description: 'user id',
-            required: true,
-            type: 'string'
-          },
-          {
-            name: 'name',
-            in: 'query',
-            required: false,
-            type: 'string'
-          },
-          {
-            name: 'cpf',
-            in: 'query',
-            required: false,
-            description: 'CPF - eleven characters ( only number)',
-            example: '12312312399',
-            type: 'string'
-          },
-          {
-            name: 'cellPhone',
-            in: 'query',
-            required: false,
-            example: '1192345678',
-            description: 'DDD with two numbers + telephone with nine numbers starting with 9',
-            type: 'string'
-          },
-          {
-            name: 'email',
-            in: 'query',
-            required: false ,
-            example: 'teste@teste.com' ,
-            type: 'string'
-          },
-          
-        ],
-        responses: {
-          200: {
-            description: 'Updated successfully'
-          },
-          400: {
-            description: 'Bad request'
-          },
-          404: {
-            description: 'Not found'
-          },
-          409: {
-            description: 'Conflict'
-          },
-          500: {
-            description: 'Internal server Error'
-          }
-        }
-      },
-      delete: {
-        summary: "Remove user",
-        description: "Delete user",
-        tags: ["User"],
-        parameters: [
-          {
-            in: "query",
-            name: "id",
-            description: "User Id",
-            required: true,
-            type: "string",
-            format: "uuid"
-          }
-        ],
-        responses: {
-            200: {
-              description: "Deleted successfully",
-            },
-            400: {
-              description: "Bad Request",
-            },
-            404: {
-              description: "Not found",
-            },
-            500: {
-              description: "Internal Server Error",
-            }
-          }
-        }
-    } 
+      }
+  } 
 }
 
 
