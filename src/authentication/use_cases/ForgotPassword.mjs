@@ -69,7 +69,7 @@ class CreateUsers {
 
   
    const message = {
-     from: 'User - Api <>',
+     from: 'NO REPLY<NOREPLY@gmail.com',
      to: param.email,
      subject: 'Código para cadastrar nova senha',
      html: `<p> Olá ${user[0].name}, utilize o código <strong> ${token} </strong> para cadastrar a nova senha.</p>`
