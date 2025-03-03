@@ -14,77 +14,86 @@ class CreateUsers {
   async execute(param) {
 
     let {    
-      USER_EMAIL, // Email do remetente
-      PASS_EMAIL, // Senha de aplicativo do Gmail (não use sua senha normal)
+      HOST_EMAIL,  
+      PORT_EMAIL,  
+      USER_EMAIL,  
+      PASS_EMAIL,
       ENVIRONMENT 
     } = process.env
-
-    // Verificar se o usuário existe
+    // Check if the user exists
     const user = await this.repository.getUserByEmail(param.email);
 
     if (user.length < 1) {
       throw new DataNotFoundException('User not found.');
     }
 
+    
     const token = crypto.randomBytes(4).toString('hex');
     const now = new Date();
     now.setMinutes(now.getMinutes() + 30);
 
-    const params = {
-      pass : PASS_EMAIL,      // Senha de aplicativo
-      user: USER_EMAIL        // Email do remetente
-    }
+    const params ={
+      pass : PASS_EMAIL,
+      user: USER_EMAIL
+    } 
 
-    // Modo de desenvolvimento: se não estiver em produção, usaremos um e-mail fixo para teste
-    if(!Application.isInProductionMode()) param.email = 'rcunha.live@gmail.com'
-
-    const transport = nodemailer.createTransport({
-      service: 'gmail',  // Usando o serviço Gmail
+    if(!Application.isInProductionMode()) param.email = 'rcunha@live.com'   
+      
+    const portEmail = Number(PORT_EMAIL)
+    const hostEmail = HOST_EMAIL
+    var transport = nodemailer.createTransport(
+      {
+      host: hostEmail,
+      port: portEmail,
+      logger: true,
+      debug: true,
       auth: {
-        user: USER_EMAIL,
-        pass: PASS_EMAIL  // Usando a senha de aplicativo
+        ...params
       },
       tls: {
-        rejectUnauthorized: false  // Evitar problemas de certificado, se necessário
+        rejectUnauthorized: false
       },
       connectionTimeout: 100000,
-    });
-
-    // Verificação de conexão SMTP
+      }
+    );
+ 
+    
     transport.verify(function(error, success) {
       if (error) {
         console.log(error);
       } else {
-        console.log('Conexão SMTP pronta');
+        console.log('SMTP connection is ready');
       }
-    });
+    });   
+    
 
-    // Mensagem a ser enviada
-    const message = {
-      from: `${USER_EMAIL}`,  // O remetente
-      to: param.email,        // Destinatário
-      subject: 'Código para cadastrar nova senha',
-      html: `<p> Olá ${user[0].name}, utilize o código <strong>${token}</strong> para cadastrar a nova senha.</p>`
-    };
+  
+   const message = {
+     from: 'User - Api <>',
+     to: param.email,
+     subject: 'Código para cadastrar nova senha',
+     html: `<p> Olá ${user[0].name}, utilize o código <strong> ${token} </strong> para cadastrar a nova senha.</p>`
+   };
 
     const dataCode = {
-      _id: UUIDGenerator.generate(),
+      _id : UUIDGenerator.generate(),
       idUser: user[0]._id,
       code: token,
       codeExpires: now,
-      message,
-      created_at: new Date()
+      message,      
+      created_at : new Date()
     }
-
-    await this.repository.saveCode(dataCode);  // Salva o código no banco de dados
-
-    // Envio do e-mail
+    
+    await this.repository.saveCode(dataCode);
     try {
-      const response = await transport.sendMail(message);
-      console.log('E-mail enviado:', response);
+     const response = await transport.sendMail(message);
+      await this.repository.saveCode(dataCode);
+      console.log('E-mail enviado:', response);     
+      
     } catch (error) {
       console.error('Erro ao enviar o e-mail:', error);
-      throw new InvalidParameterException(JSON.stringify({ "message": "Failed to send email, try later", error }));
+      throw new InvalidParameterException(JSON.stringify({ "message": "Failed to send email, try later", error}));
+      
     }
   }
 }
