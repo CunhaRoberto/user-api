@@ -16,6 +16,7 @@ let {
   PORT
 } = process.env
 
+DB_URI = `mongodb${SRV}://${DB_HOST_LOCAL}:${DB_PORT_LOCAL}` 
 
 if (Application.isInLocalMode()) {
   DB_URI = `mongodb://${DB_HOST_LOCAL}:${DB_PORT_LOCAL}`  
