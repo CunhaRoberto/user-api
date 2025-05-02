@@ -1,19 +1,25 @@
+import * as CreatePropertyController from './controllers/CreateController.mjs';
+import { Router } from 'express';
+import { upload } from '../../infra/bucket/multer.mjs';
+import express from 'express'
 
-//import * as CreateUsersController from './controllers/CreateUsersController.mjs'
-import * as SearchPropertyController from './controllers/SearchPropertyController.mjs'
-//import * as UpdateUsersController from './controllers/UpdateUsersController.mjs'
-//import * as DeleteUsersController from './controllers/DeleteUsersController.mjs'
+const app = express();
+const router = Router();
 
-import { Router } from 'express'
+// const upload = multer({
+//   dest: 'uploads/',
+//   limits: { files: 6 },
+//   fileName: (req, file, cb) => {
+//     const ext = path.extname(file.originalname);
+//     if (!['.png', '.jpg', '.jpeg'].includes(ext)) {
+//       return cb(new Error('Apenas imagens são permitidas'));
+//     }
+//     cb(null, true);
+//   },
+// });
 
-const router = Router()
 
 
-// router.route('/property/').post(CreateUsersController.create)
-router.route('/property/').get(SearchPropertyController.search)
-// router.route('/property/id').get(SearchUsersController.searchById)
-// router.route('/property/id').put(UpdateUsersController.update)
-// router.route('/property/id').delete(DeleteUsersController.remove)
+router.route('/property/').post(upload.array('photo', 6), CreatePropertyController.create);
 
-
-export default router
+export default router;
