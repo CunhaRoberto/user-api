@@ -20,13 +20,12 @@ const presenterMap = (data) => {
 }
 
 const presenter = async (data) => {
+  let id = UUIDGenerator.from(data._id).toString()
+  delete data._id
+
   let result = {
-    id: UUIDGenerator.from(data._id).toString(),
-    type: data.type,
-    name: data.name,
-    cpf: data.cpf,
-    email: data.email,
-    created_at: data.created_at
+  id, 
+  ...data
 
   }
 

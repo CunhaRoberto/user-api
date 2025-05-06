@@ -13,8 +13,9 @@ export async function create(request, response, next) {
     // await CreateValidator.validate(propertyDto)
     
     const propertyDto = {
-      ...request.body,     
-      photos: (request.files || []).map(({ fieldname, filename, path }) => ({ fieldname, filename,  path: path.replace(/\\/g, '/') }))
+      ...request.body,
+      photos: request.files,     
+      //photos: (request.files || []).map(({ fieldname, filename, path }) => ({ fieldname, filename,  path }))
     };
 
     const createUseCase = new CreateProperty(Repository)

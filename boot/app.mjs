@@ -1,3 +1,4 @@
+import express from 'express'
 import AppProvider from './providers/AppProvider.mjs'
 import Application from '../config/app.mjs'
 import Compression from './middlewares/Compression.mjs'
@@ -8,6 +9,11 @@ import RouteProvider from './providers/RouteProvider.mjs'
 import cors from 'cors'
 import swaggerDocument from '../infra/documents/swagger.js'
 import swaggerUi from 'swagger-ui-express'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 async function registerProviders(app) {
   AppProvider.boot(app)
@@ -35,9 +41,11 @@ export default async (app) => {
     }
   }))
 
+  // ✅ Servir arquivos estáticos da pasta uploads
+  app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
+
   await registerProviders(app)
 
   ExceptionHandler.handle(app)
   boot(app)
-
-  }
+}
