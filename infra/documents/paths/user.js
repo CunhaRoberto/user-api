@@ -16,9 +16,9 @@ export default
             type: 'object',
             properties: {
                 name: {
-                type: 'string',
-                require: true,
-                example: 'Sophia Cunha'
+                  type: 'string',
+                  require: true,
+                  example: 'Sophia Cunha'
               },
               cpf: {
                 type: 'string',

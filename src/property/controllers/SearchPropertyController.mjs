@@ -4,7 +4,7 @@ import { default as PropertyPresenter } from '../presenters/SearchProperty.mjs'
 import PropertyRepository from '../repositories/Property.mjs'
 import RepositoryImpl from '../../../infra/repository/index.mjs'
 import SearchProperty from '../useCases/SearchProperty.mjs'
-import { default as SearchUsersIdValidator } from '../validators/SearchUsersById.mjs'
+import { default as SearchPropertyIdValidator } from '../validators/SearchUsersById.mjs'
 
 const Repository = new PropertyRepository(RepositoryImpl)
 
@@ -21,13 +21,13 @@ export async function search(request, response, next) {
 
 export async function searchById(request, response, next) {
   try {
-    const userId = request.query
-    await SearchUsersIdValidator.validate(userId)
+    const propertyId = request.query
+    await SearchPropertyIdValidator.validate(propertyId)
 
-    const searchUsersIdUseCase = new SearchUsersId(Repository)
-    const resultUsers = await searchUsersIdUseCase.searchById(userId)
-    const presentUser = await UserIdPresenter.present(resultUsers)
-    return response.status(200).json(presentUser)
+    const searchPropertyIdUseCase = new SearchProperty(Repository)
+    const result = await searchPropertyIdUseCase.searchById(propertyId)
+    const presentProperty = await PropertyPresenter.present(result)
+    return response.status(200).json(presentProperty)
   } catch (error) {
     return next(error)
   }
