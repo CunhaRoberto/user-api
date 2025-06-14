@@ -2,40 +2,106 @@ export default
 {
   //property module
   '/property/': {
+    // post: {
+    //   summary: 'Create property with photos',
+    //   tags: ['Property'],
+    //   description: 'Create property with up to 6 photos',
+    //   consumes: [
+    //     'multipart/form-data'
+    //   ],
+    //   parameters: [
+    //     // {
+    //     //   in: 'formData',
+    //     //   name: 'idOwner',
+    //     //   type: 'string',
+    //     //   format: "uuid",
+    //     //   required: true,
+    //     //   description: 'Owner id',
+    //     //   example: 'Casa Aconchegante'
+    //     // },
+    //     {
+    //       in: 'formData',
+    //       name: 'zipCode',
+    //       type: 'string',
+    //       required: true,
+    //       description: 'zip code',
+    //       example: '15024215'
+    //     },
+    //     {
+    //       in: 'formData',
+    //       name: 'photo',
+    //       type: 'array',
+    //       items: {
+    //         type: 'file'
+    //       },
+    //       collectionFormat: 'multi',
+    //       description: 'One or more property photos. You can upload up to 6 photos using multiple instances of this field (e.g., photo1, photo1, photo1...).'
+    //     }
+    //   ],
+    //   responses: {
+    //     201: {
+    //       description: 'Created successfully'
+    //     },
+    //     400: {
+    //       description: 'Bad request'
+    //     },
+    //     404: {
+    //       description: 'Not found'
+    //     },
+    //     409: {
+    //       description: 'Conflict'
+    //     },
+    //     500: {
+    //       description: 'Internal Server Error'
+    //     }
+    //   }
+    // },
     post: {
-      summary: 'Create property with photos',
+      summary: 'Create property',
       tags: ['Property'],
-      description: 'Create property with up to 6 photos',
-      consumes: [
-        'multipart/form-data'
-      ],
+      description: 'Create property',
       parameters: [
-        // {
-        //   in: 'formData',
-        //   name: 'idOwner',
-        //   type: 'string',
-        //   format: "uuid",
-        //   required: true,
-        //   description: 'Owner id',
-        //   example: 'Casa Aconchegante'
-        // },
         {
-          in: 'formData',
-          name: 'zipCode',
-          type: 'string',
-          required: true,
-          description: 'zip code',
-          example: '15024215'
-        },
-        {
-          in: 'formData',
-          name: 'photo',
-          type: 'array',
-          items: {
-            type: 'file'
-          },
-          collectionFormat: 'multi',
-          description: 'One or more property photos. You can upload up to 6 photos using multiple instances of this field (e.g., photo1, photo1, photo1...).'
+          in: 'body',
+          name: 'body',
+          description: 'description',
+          require: 'require',
+          schema: {
+            type: 'object',
+            properties: {
+                idOwner: {
+                  type: 'string',
+                  require: true,
+                  example: '315db668-d01a-446f-96a3-00a92817d15f'
+              },
+              zipCode: {
+                type: 'string',
+                require: true,
+                example: '02710-040'
+              },
+              address: {
+                type: 'string',
+                require: true,
+                example: 'Rua São José'
+              },
+              city: {
+                type: 'string',
+                require: true,
+                example: 'São Paulo'
+              },
+               price: {
+                type: 'number',
+                require: true,
+                example: 500.00
+              },
+               thumb: {
+                type: 'string',
+                require: true,
+                example: 'https://i.im.ge/2025/06/11/JMwYDL.04.jpeg'
+              },
+             
+            }
+          }
         }
       ],
       responses: {
@@ -55,7 +121,7 @@ export default
           description: 'Internal Server Error'
         }
       }
-    },
+      },
     get: {
       summary: 'Search properties',
       description: 'Search properties',

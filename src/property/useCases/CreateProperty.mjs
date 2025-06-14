@@ -12,7 +12,11 @@ class CreateProperty {
   }
 
   async execute(propertyDto) {
-     
+  
+     const resultOwnerUser = await this.repository.getById(UUIDGenerator.from(propertyDto.idOwner), 'user')
+    if (!resultOwnerUser) {
+      throw new DataNotFoundException('Owner not found.')
+    }
     
     // const owner = await this.repository.getById(id)
 

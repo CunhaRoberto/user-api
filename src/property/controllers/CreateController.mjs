@@ -12,12 +12,12 @@ export async function create(request, response, next) {
    
     // await CreateValidator.validate(propertyDto)
     
-    const propertyDto = {
-      ...request.body,
-      photos: request.files,     
-      //photos: (request.files || []).map(({ fieldname, filename, path }) => ({ fieldname, filename,  path }))
-    };
-
+    // const propertyDto = {
+    //   ...request.body,
+    //   photos: request.files,     
+    //   //photos: (request.files || []).map(({ fieldname, filename, path }) => ({ fieldname, filename,  path }))
+    // };
+    const propertyDto = request.body
     const createUseCase = new CreateProperty(Repository)
     const result = await createUseCase.execute(propertyDto)
     const present = await Presenter.present(result)

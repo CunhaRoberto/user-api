@@ -29,10 +29,12 @@ class Property {
     return data
   }
  
-  async getById(id) {
-    const data = await this.repository.get(this.collection, id)
+  async getById(id, collection) {
+    const data = await this.repository.get(collection? collection:this.collection, id)
     return data
   }
+
+  
 
   
  
