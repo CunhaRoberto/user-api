@@ -9,5 +9,6 @@ const router = Router();
 
 router.route('/property/').post(upload.array('photo', 6), CreatePropertyController.create);
 router.route('/property/id').get(SearchPropertyController.searchById)
+router.route('/property').get(SearchPropertyController.search)
 
 export default router;
